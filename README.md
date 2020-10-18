@@ -25,3 +25,4 @@ steps:
   - windows ```/Scripts/activate.bat```
   - mac and linux ```source env/bin/activate```
 -  ```pip install```
+- execute ```python run.py``` and open youre explorer in ```localhost:5000```
