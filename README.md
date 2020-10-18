@@ -5,9 +5,11 @@ Requirement before install project:
   2. Install virtualenv
 
 ## Environment preparation
+The next commands should by executing in terminal inside directory ```api-salud```
 steps:
   1. ```pip install virtualenv```
-  2. active virtual environment with commands:
-  - windows ```env\Scripts\activate.bat```
+  2. ```virtualenv .```
+  3. active virtual environment with commands:
+  - windows ```/Scripts/activate.bat```
   - mac and linux ```source env/bin/activate```
-  3. ```pip install```
+  4. ```pip install```
