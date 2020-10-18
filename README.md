@@ -24,5 +24,5 @@ steps:
 - active virtual environment with commands:
   - windows ```/Scripts/activate.bat```
   - mac and linux ```source env/bin/activate```
--  ```pip install```
+-  ```pip install -r requirements.txt```
 - execute ```python run.py``` and open youre explorer in ```localhost:5000```
