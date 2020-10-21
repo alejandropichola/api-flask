@@ -4,6 +4,15 @@ class User(db.Model):
   __tablename__ = 'user'
   dpi = db.Column(db.Integer, primary_key=True, autoincrement=False)
   fullName = db.Column('full_name',db.String(100))
+  phone = db.Column(db.String(20))
+  email = db.Column(db.String(100))
+  address = db.Column(db.String(300))
+  date = db.Column(db.DateTime),
+  temperature = db.Column(db.Numeric)
+  heartRate = db.Column('heart_rate', db.Numeric)
+  hasMask = db.Column('has_mask', db.Boolean)
+  hasFaceShield = db.Column('has_face_shield', db.Boolean)
+  hasRules = db.Column('has_rules', db.Boolean)
 
   def __init__(self, dpi, fullName):
     self.dpi = dpi
