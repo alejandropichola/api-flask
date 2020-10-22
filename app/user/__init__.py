@@ -19,7 +19,7 @@ def getAllUser():
   for item in data:
     response.append({
       'dpi': item.dpi,
-      'fullName': item.fullName,
+      'name': item.name,
       'phone': item.phone,
       'email': item.email,
       'address': item.address,

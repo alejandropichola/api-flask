@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__)
@@ -23,5 +24,7 @@ from app.user import userController
 
 app.register_blueprint(hello)
 app.register_blueprint(userController)
+
+CORS(app)
 
 migrate = Migrate(app, db)
