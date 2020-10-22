@@ -14,9 +14,9 @@ class User(db.Model):
   hasFaceShield = db.Column('has_face_shield', db.Boolean)
   hasRules = db.Column('has_rules', db.Boolean)
 
-  def __init__(self, dpi, fullName, phone, email, address, date, temperature, heartRate, hasMask, hasFaceShield, hasRules):
+  def __init__(self, dpi, name, phone, email, address, date, temperature, heartRate, hasMask, hasFaceShield, hasRules):
     self.dpi = dpi
-    self.fullName = fullName
+    self.name = name
     self.phone = phone
     self.email = email
     self.address = address
