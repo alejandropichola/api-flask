@@ -49,7 +49,7 @@ def getAllUser():
     })
   return json.dumps(response, use_decimal=True)
 
-@app.route('/user/<dpi>')
+@app.route('/user/<dpi>', methods=['GET'])
 def getUser(dpi):
   data = User.query.filter_by(dpi=dpi).first()
   response = {
@@ -67,7 +67,7 @@ def getUser(dpi):
   }
   return json.dumps(response, use_decimal=True)
 
-@app.route('/user/<dpi>/symptoms')
+@app.route('/user/<dpi>/symptoms', methods=['GET'])
 def getUserSymptoms(dpi):
   data = UserSymptoms.query.filter_by(dpi=dpi).first()
   response = []
@@ -84,6 +84,20 @@ def getUserSymptoms(dpi):
     })
   return json.dumps(response, use_decimal=True)
 
-@app.route('/user/<dpi>/symptoms')
+@app.route('/user/<dpi>/symptoms', methods=['POST'])
 def addUserSymptoms(dpi):
-  return 'test'
+  dataRequest = request.get_json()
+  response = dataRequest['data']
+  symtomps = []
+  for item in response:
+    symtomps.append(UserSymptoms(
+      dpi = item['dpi'],
+      date = item['date'],
+      symptoms = item['symptoms'],
+      temperature = item['temperature'],
+      heartRate = item['heartRate']
+    ))
+
+  db.session.bulk_save_objects(symtomps)
+  db.session.commit()
+  return json.dumps(response)
