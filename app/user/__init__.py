@@ -1,6 +1,6 @@
 from flask import Blueprint, request, abort
 from app import app, db
-from app.user.model.user import User
+from app.user.model.user import User, UserSymptoms
 import simplejson as json
 
 userController = Blueprint('userController', __name__)
@@ -48,3 +48,42 @@ def getAllUser():
       'hasRules': item.hasRules
     })
   return json.dumps(response, use_decimal=True)
+
+@app.route('/user/<dpi>')
+def getUser(dpi):
+  data = User.query.filter_by(dpi=dpi).first()
+  response = {
+    'dpi': data.dpi,
+    'name': data.name,
+    'phone': data.phone,
+    'email': data.email,
+    'address': data.address,
+    'date': str(data.date),
+    'temperature': data.temperature,
+    'heartRate': data.heartRate,
+    'hasMask': data.hasMask,
+    'hasFaceShield': data.hasFaceShield,
+    'hasRules': data.hasRules,
+  }
+  return json.dumps(response, use_decimal=True)
+
+@app.route('/user/<dpi>/symptoms')
+def getUserSymptoms(dpi):
+  data = UserSymptoms.query.filter_by(dpi=dpi).first()
+  response = []
+  if data==None:
+    return json.dumps(response, use_decimal=True)
+  for item in data:
+    response.append({
+      'id': item.id,
+      'dpi': item.dpi,
+      'date': str(item.date),
+      'symptoms': item.symptoms,
+      'temperature': item.temperature,
+      'heartRate': item.heartRate
+    })
+  return json.dumps(response, use_decimal=True)
+
+@app.route('/user/<dpi>/symptoms')
+def addUserSymptoms(dpi):
+  return 'test'
