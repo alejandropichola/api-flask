@@ -69,7 +69,7 @@ def getUser(dpi):
 
 @app.route('/user/<dpi>/symptoms', methods=['GET'])
 def getUserSymptoms(dpi):
-  data = UserSymptoms.query.filter_by(dpi=dpi).first()
+  data = UserSymptoms.query.filter_by(dpi=dpi)
   response = []
   if data==None:
     return json.dumps(response, use_decimal=True)
