@@ -1,5 +1,5 @@
 from flask import Blueprint, request, abort
-from app import app, db
+from app import app
 import simplejson as json
 import urllib3
 
